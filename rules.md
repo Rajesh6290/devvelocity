@@ -425,7 +425,25 @@ Max size: **10MB**.
 
 ---
 
-## 8. General Rules
+## 8. Viewport Height Rule
+
+- **Never use `h-screen`, `min-h-screen`, or `100vh`** — they break on mobile browsers due to the dynamic address bar.
+- **Always use `h-dvh` and `min-h-dvh`** (dynamic viewport height) instead.
+
+```tsx
+// ❌ Wrong
+<div className="h-screen">...</div>
+<div className="min-h-screen">...</div>
+<div style={{ height: '100vh' }}>...</div>
+
+// ✅ Correct
+<div className="h-dvh">...</div>
+<div className="min-h-dvh">...</div>
+```
+
+---
+
+## 9. General Rules
 
 - **No `console.log`** in committed code. Use proper error boundaries or logging utilities.
 - **No hardcoded API URLs** — always use the `useSwr` / `useMutation` hooks which resolve through `/api/`.
